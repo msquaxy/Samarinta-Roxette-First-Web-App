@@ -1,0 +1,9 @@
+#!/bin/sh
+if command -v mvn >/dev/null 2>&1; then
+    exec mvn "$@"
+elif [ -f "$HOME/.m2/wrapper/dists/apache-maven-3.10.0/2aaba761688b1a6ea5a46e7e5f4d5406ed7a75ee8da95e5e3079863a23461c9b/bin/mvn" ]; then
+    exec "$HOME/.m2/wrapper/dists/apache-maven-3.10.0/2aaba761688b1a6ea5a46e7e5f4d5406ed7a75ee8da95e5e3079863a23461c9b/bin/mvn" "$@"
+else
+    echo "Error: Maven not found."
+    exit 1
+fi
